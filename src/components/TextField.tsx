@@ -71,7 +71,7 @@ const TextField = (): React.JSX.Element => {
         setFields(oldFields => ([...currFields, {id: generateObjectID(), type: '', content: '', focus: true}]));
         console.log("fields", currFields, fields)
     }
-    return <div className="py-2 h-60 overflow-y-scroll">
+    return <div className="py-2 h-60 overflow-y-scroll no-scrollbar">
         {
             fields.map((field: Field) => (<Block HandleInput={HandleInput} blockObject={field} key={field.id}/>))
         }

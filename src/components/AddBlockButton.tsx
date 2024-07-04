@@ -71,7 +71,6 @@ const AddBlockButton = ({
 		setShowMenu(false);
 	};
 	const embedSocials = (): void => {
-		HandleVideoUpload(videoURL);
 		setShowSocialsModal(false);
 		setShowMenu(false);
 	};
