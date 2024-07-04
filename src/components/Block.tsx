@@ -19,10 +19,10 @@ const Block = ({ blockObject, HandleInput }: { blockObject: Record<string, any>,
             {blockObject.content}
         </p> } */}
         <div
-            className="outline-none text-xs py-2"
+            className={`outline-none text-xs py-2 ${blockObject.type === "link" ? "text-blue-700 hover:underline" : ""}`}
             ref={divRef}
-            contentEditable
-            data-placeholder="Edit paragraph"
+            contentEditable={blockObject.type !== "link"}
+            data-placeholder="Add new paragraph"
             dangerouslySetInnerHTML={{__html: blockObject.content}}
             onInput={handleInput}
         ></div>

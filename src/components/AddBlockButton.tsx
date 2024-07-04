@@ -11,9 +11,11 @@ import { Switch } from "@material-tailwind/react";
 const AddBlockButton = ({
 	HandleImageUpload,
 	HandleVideoUpload,
+    HandleSocialsUpload
 }: {
 	HandleImageUpload: (imageBlob: string | ArrayBuffer) => any;
 	HandleVideoUpload: (videoURL: string) => any;
+	HandleSocialsUpload: (socialsURL: string, socialsCode: string) => any;
 }): React.JSX.Element => {
 	const [selectFile, setSelectFile] = React.useState<File | null>();
 	const [videoURL, setVideoURL] = React.useState<string>("");
@@ -71,6 +73,7 @@ const AddBlockButton = ({
 		setShowMenu(false);
 	};
 	const embedSocials = (): void => {
+        HandleSocialsUpload(socialsURL, socialsCode)
 		setShowSocialsModal(false);
 		setShowMenu(false);
 	};

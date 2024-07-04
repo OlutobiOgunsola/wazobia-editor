@@ -71,11 +71,29 @@ const TextField = (): React.JSX.Element => {
         setFields(oldFields => ([...currFields, {id: generateObjectID(), type: '', content: '', focus: true}]));
         console.log("fields", currFields, fields)
     }
+    const HandleSocialsUpload = (socialsURL: string, socialsCode: string): void => {
+        console.log(socialsURL)
+        // create field object
+        const newFieldObject = {
+            id: generateObjectID(),
+            type: "link",
+            content: `<a href=${socialsURL}>${socialsCode ? socialsCode : socialsURL}</a>`,
+            focus: false
+        }
+        
+        // append to fields array
+        const currFields = fields.filter((field) => (field.content !== ""));
+        console.log("new field", currFields)
+        currFields.push(newFieldObject);
+        // set fields array
+        setFields(oldFields => ([...currFields, {id: generateObjectID(), type: '', content: '', focus: true}]));
+        console.log("fields", currFields, fields)
+    }
     return <div className="py-2 h-60 overflow-y-scroll no-scrollbar">
         {
             fields.map((field: Field) => (<Block HandleInput={HandleInput} blockObject={field} key={field.id}/>))
         }
-        <AddBlockButton HandleVideoUpload={HandleVideoUpload} HandleImageUpload={HandleImageUpload} />
+        <AddBlockButton HandleVideoUpload={HandleVideoUpload} HandleImageUpload={HandleImageUpload} HandleSocialsUpload={HandleSocialsUpload} />
     </div>
 }
 
